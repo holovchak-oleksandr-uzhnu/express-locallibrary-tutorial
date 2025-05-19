@@ -8,8 +8,7 @@ const Book = require("../models/book");
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
   const allBookInstances = await BookInstance.find().populate("book").exec();
 
-  res.render("bookinstance_list", {
-    title: "Book Instance List",
+  res.json({
     bookinstance_list: allBookInstances,
   });
 });
@@ -27,8 +26,7 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("bookinstance_detail", {
-    title: "Bookinstance Detail",
+  res.json({
     bookinstance: bookInstance,
   });
 });
@@ -37,14 +35,13 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
 exports.bookinstance_create_get = asyncHandler(async (req, res, next) => {
   const allBooks = await Book.find({}, "title").sort({ title: 1 }).exec();
 
-  res.render("bookinstance_form", {
-    title: "Create BookInstance",
+  res.json({
     book_list: allBooks,
   });
 });
 
 // Handle BookInstance create on POST.
-exports.bookinstance_create_post = [
+exports.bookinstance_create = [
   // Validate and sanitize fields.
   body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
   body("imprint", "Imprint must be specified")
@@ -75,10 +72,9 @@ exports.bookinstance_create_post = [
       // Render form again with sanitized values and error messages.
       const allBooks = await Book.find({}, "title").sort({ title: 1 }).exec();
 
-      res.render("bookinstance_form", {
-        title: "Create BookInstance",
+      res.json({
         book_list: allBooks,
-        selected_book: bookInstance.book._id,
+        selected_book: bookInstance._id,
         errors: errors.array(),
         bookinstance: bookInstance,
       });
@@ -87,6 +83,12 @@ exports.bookinstance_create_post = [
       // Data from form is valid
       await bookInstance.save();
       res.redirect(bookInstance.url);
+
+      res.json({
+        message: "Book instance created successfully",
+        bookinstance: bookInstance,
+      });
+      
     }
   }),
 ];
@@ -99,17 +101,15 @@ exports.bookinstance_delete_get = asyncHandler(async (req, res, next) => {
     res.redirect("/catalog/bookinstances");
     return;
   }
-
-  res.render("bookinstance_delete", {
-    title: "Delete BookInstance",
+  res.json({
     bookinstance: bookInstance,
   });
 });
 
 // Handle BookInstance delete on POST.
-exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {
-  await BookInstance.findByIdAndDelete(req.body.bookinstanceid);
-  res.redirect("/catalog/bookinstances");
+exports.bookinstance_delete = asyncHandler(async (req, res, next) => {
+  await BookInstance.findByIdAndDelete(req.params.id);
+  res.json({ message: "BookInstance deleted successfully" });
 });
 
 
@@ -126,16 +126,15 @@ exports.bookinstance_update_get = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("bookinstance_form", {
-    title: "Update BookInstance",
+  res.json({
     book_list: allBooks,
-    selected_book: bookInstance.book._id,
+    selected_book: bookInstance._id,
     bookinstance: bookInstance,
   });
 });
 
 // Handle BookInstance update on POST.
-exports.bookinstance_update_post = [
+exports.bookinstance_update = [
   body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
   body("imprint", "Imprint must be specified")
     .trim()
@@ -160,10 +159,9 @@ exports.bookinstance_update_post = [
 
     if (!errors.isEmpty()) {
       const allBooks = await Book.find({}, "title").sort({ title: 1 }).exec();
-      res.render("bookinstance_form", {
-        title: "Update BookInstance",
+      res.json({
         book_list: allBooks,
-        selected_book: bookInstance.book._id,
+        selected_book: bookInstance._id,
         bookinstance: bookInstance,
         errors: errors.array(),
       });

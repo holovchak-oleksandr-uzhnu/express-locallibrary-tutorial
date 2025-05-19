@@ -1,0 +1,662 @@
+{
+	"info": {
+		"_postman_id": "256ecd4d-e999-46c5-80a1-6840c158905f",
+		"name": "Express-locallibrary-tutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45099762"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Books List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books/682b67fd44091699e486a4dd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"682b67fd44091699e486a4dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books/682b67fd44091699e486a4dd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"682b67fd44091699e486a4dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books/682b67fd44091699e486a4dd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books",
+								"682b67fd44091699e486a4dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Create GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/book/create/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"book",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Delete GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/book/682b67fd44091699e486a4dd/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"book",
+								"682b67fd44091699e486a4dd",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Update GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/book/682b67fd44091699e486a4dd/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"book",
+								"682b67fd44091699e486a4dd",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Author List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/authors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/authors/682b67fc44091699e486a4d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"authors",
+								"682b67fc44091699e486a4d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/authors",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/authors/682b67fc44091699e486a4d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"authors",
+								"682b67fc44091699e486a4d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/authors/682b67fc44091699e486a4d6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"authors",
+								"682b67fc44091699e486a4d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Create GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/author/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"author",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Delete GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/author/682b67fc44091699e486a4d6/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"author",
+								"682b67fc44091699e486a4d6",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Update GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/author/682b67fc44091699e486a4d6/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"author",
+								"682b67fc44091699e486a4d6",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "Genre List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres/682b67fc44091699e486a4cd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"682b67fc44091699e486a4cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres/682b67fc44091699e486a4cd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"682b67fc44091699e486a4cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres/682b67fc44091699e486a4cd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"682b67fc44091699e486a4cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Create GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genre/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genre",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Delete GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genre/682b67fc44091699e486a4cd/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genre",
+								"682b67fc44091699e486a4cd",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Update GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genre/682b67fc44091699e486a4cd/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genre",
+								"682b67fc44091699e486a4cd",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookinstance",
+			"item": [
+				{
+					"name": "BookInstance List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstances",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstances/682b67fd44091699e486a4f1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstances",
+								"682b67fd44091699e486a4f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstances",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstances/682b67fd44091699e486a4f1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstances",
+								"682b67fd44091699e486a4f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstances/682b67fd44091699e486a4f1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstances",
+								"682b67fd44091699e486a4f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Create GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstance/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstance",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Delete GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstance/682b67fd44091699e486a4f1/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstance",
+								"682b67fd44091699e486a4f1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance Update GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bookinstance/682b67fd44091699e486a4f1/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bookinstance",
+								"682b67fd44091699e486a4f1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3000/catalog",
+			"type": "string"
+		}
+	]
+}

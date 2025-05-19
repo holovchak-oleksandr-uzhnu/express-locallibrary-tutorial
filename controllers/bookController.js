@@ -22,8 +22,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     Genre.countDocuments({}).exec(),
   ]);
 
-  res.render("index", {
-    title: "Local Library Home",
+  res.json({
     book_count: numBooks,
     book_instance_count: numBookInstances,
     book_instance_available_count: numAvailableBookInstances,
@@ -34,12 +33,15 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 // Display list of all books.
 exports.book_list = asyncHandler(async (req, res, next) => {
-  const allBooks = await Book.find({}, "title author")
+  const allBooks = await Book.find()
     .sort({ title: 1 })
     .populate("author")
+    .populate("genre")
     .exec();
 
-  res.render("book_list", { title: "Book List", book_list: allBooks });
+  res.json({
+     book_list: allBooks 
+    });
 });
 
 
@@ -58,8 +60,7 @@ exports.book_detail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render("book_detail", {
-    title: "Book Detail",
+  res.json({
     book: book,
     book_instances: bookInstances,
   });
@@ -74,8 +75,7 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
     Genre.find().sort({ name: 1 }).exec(),
   ]);
 
-  res.render("book_form", {
-    title: "Create Book",
+  res.json({
     authors: allAuthors,
     genres: allGenres,
   });
@@ -83,7 +83,7 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
 
 
 // Handle book create on POST.
-exports.book_create_post = [
+exports.book_create = [
   // Convert the genre to an array.
   (req, res, next) => {
     if (!Array.isArray(req.body.genre)) {
@@ -138,8 +138,7 @@ exports.book_create_post = [
           genre.checked = "true";
         }
       }
-      res.render("book_form", {
-        title: "Create Book",
+      res.json({
         authors: allAuthors,
         genres: allGenres,
         book: book,
@@ -166,15 +165,14 @@ exports.book_delete_get = asyncHandler(async (req, res, next) => {
     res.redirect("/catalog/books");
   }
 
-  res.render("book_delete", {
-    title: "Delete Book",
+  res.json({
     book: book,
     book_instances: bookInstances,
   });
 });
 
 // Handle Book delete on POST.
-exports.book_delete_post = asyncHandler(async (req, res, next) => {
+exports.book_delete = asyncHandler(async (req, res, next) => {
   const [book, bookInstances] = await Promise.all([
     Book.findById(req.params.id).exec(),
     BookInstance.find({ book: req.params.id }).exec(),
@@ -182,8 +180,7 @@ exports.book_delete_post = asyncHandler(async (req, res, next) => {
 
   if (bookInstances.length > 0) {
     // Book has instances. Render in the same way as for GET route.
-    res.render("book_delete", {
-      title: "Delete Book",
+    res.json({
       book: book,
       book_instances: bookInstances,
     });
@@ -217,8 +214,7 @@ exports.book_update_get = asyncHandler(async (req, res, next) => {
     if (book.genre.includes(genre._id)) genre.checked = "true";
   });
 
-  res.render("book_form", {
-    title: "Update Book",
+  res.json({
     authors: allAuthors,
     genres: allGenres,
     book: book,
@@ -227,7 +223,7 @@ exports.book_update_get = asyncHandler(async (req, res, next) => {
 
 
 // Handle book update on POST.
-exports.book_update_post = [
+exports.book_update = [
   // Convert the genre to an array.
   (req, res, next) => {
     if (!Array.isArray(req.body.genre)) {
@@ -283,8 +279,7 @@ exports.book_update_post = [
           genre.checked = "true";
         }
       }
-      res.render("book_form", {
-        title: "Update Book",
+      res.json({
         authors: allAuthors,
         genres: allGenres,
         book: book,

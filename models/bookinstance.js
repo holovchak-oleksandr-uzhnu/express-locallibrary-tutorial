@@ -23,7 +23,7 @@ BookInstanceSchema.virtual("url").get(function () {
 
 // Virtual for a better Date format
 BookInstanceSchema.virtual("due_back_formatted").get(function () {
-  return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
+  return DateTime.fromJSDate(this.due_back).setLocale("uk").toLocaleString(DateTime.DATE_FULL); 
 });
 // Export model
 module.exports = mongoose.model("BookInstance", BookInstanceSchema);

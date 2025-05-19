@@ -17,7 +17,7 @@ AuthorSchema.virtual("name").get(function () {
   let fullname = "";
   if (this.first_name && this.family_name) {
     fullname = `${this.family_name}, ${this.first_name}`;
-  }  
+  }
   return fullname;
 });
 
@@ -27,16 +27,21 @@ AuthorSchema.virtual("url").get(function () {
   return `/catalog/author/${this._id}`;
 });
 
-// Virtual for a better date_of_birth format
-AuthorSchema.virtual("formated_birth").get(function () {
-  return this.date_of_birth ? 
-  DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATETIME_SHORT): 'n/a';
-});
+// Virtual for formatted lifespan
+AuthorSchema.virtual("lifespan").get(function () {
+  const birth = this.date_of_birth ? 
+  DateTime.fromJSDate(this.date_of_birth).setLocale("uk").toLocaleString(DateTime.DATE_FULL): "n/a";
 
-// Virtual for a better date_of_death format
-AuthorSchema.virtual("formated_death").get(function () {
-  return this.date_of_death ? 
-  DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATETIME_SHORT): 'n/a';
+  const death = this.date_of_death ? 
+  DateTime.fromJSDate(this.date_of_death).setLocale("uk").toLocaleString(DateTime.DATE_FULL): "n/a";
+
+  // Розрахунок віку (якщо є дати народження та смерті)
+  let age = "";
+  if (this.date_of_birth) {
+    const endDate = this.date_of_death ? this.date_of_death : new Date();
+    age = ` (${DateTime.fromJSDate(endDate).diff(DateTime.fromJSDate(this.date_of_birth), "years").years.toFixed(0)} років)`;
+  }
+  return `${birth} – ${death}${age}`;
 });
 
 // Export model
